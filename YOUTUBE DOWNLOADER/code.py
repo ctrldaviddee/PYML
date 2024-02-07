@@ -50,10 +50,10 @@ def download_playlist(playlist_url, resolution):
         video_streams = video.streams.filter(res=resolution)
 
         if not video_streams:
-            highest_resolution_stream = video.streams.get_highest_resolution()
-            video_name = highest_resolution_stream.default_filename
-            print(f"Downloading {video_name} in {highest_resolution_stream.resolution}" )  
-            highest_resolution_stream.download(filename=video_path)
+                highest_resolution_stream = video.streams.get_highest_resolution()
+                video_name = highest_resolution_stream.default_filename
+                print(f"Downloading {video_name} in {highest_resolution_stream.resolution}" )  
+                highest_resolution_stream.download(filename=video_path)
 
         # If the desired resolution is available, you don't have to download it directly. 
         # If you do so, the downloaded video won't have sound. Instead, download both the video and audio streams separately, 
