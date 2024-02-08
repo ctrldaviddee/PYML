@@ -2,7 +2,6 @@ import os
 
 # re module to handle regular expressions
 import re
-from numpy import intp
 
 from pytube import YouTube
 
@@ -39,17 +38,17 @@ def download_video(video_url, resolution):
         highest_resolution_stream = video_to_download.streams.get_highest_resolution()
         video_name = highest_resolution_stream.default_filename
         print(f"Downloading {video_name} in {highest_resolution_stream.resolution}" )  
-        highest_resolution_stream.download(filename=video_path)
+        highest_resolution_stream.download(filename=video_path, on_progress_callback=show_progress)
 
     else:
             video_stream = video_streams.first()
             video_name = video_stream.default_filename
             print(f"Downloading video for {video_name} in {resolution}")
-            video_stream.download(filename="video.mp4")
+            video_stream.download(filename="video.mp4", on_progress_callback=show_progress)
 
             audio_stream = video_to_download.streams.get_audio_only()
             print(f"Downloading audio for {video_name}")
-            audio_stream.download(filename="audio.mp4")
+            audio_stream.download(filename="audio.mp4", on_progress_callback=show_progress)
 
             os.system("ffmpeg -y -i video.mp4 -i audio.mp4 -c:v copy -c:a aac final.mp4 -loglevel quiet -stats")
             os.rename("final.mp4", video_path)
@@ -57,6 +56,12 @@ def download_video(video_url, resolution):
             os.remove("audio.mp4")
             
     print("----------------------------------")
+
+
+def show_progress(stream, chunk, bytes_remaining):
+    current_progress = (stream.filesize - bytes_remaining) / stream.filesize * 100
+    print(f"Download progress: {current_progress:.2f}%\r", end='')
+
 
 
 if __name__ == '__main__':
