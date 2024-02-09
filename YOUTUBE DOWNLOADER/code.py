@@ -21,7 +21,6 @@ def download_playlist(playlist_url, resolution):
     if not os.path.exists(playlist_name):
         os.mkdir(playlist_name)
 
-
     # The Playlist object provides a videos property which is an iterable of YouTube objects. 
     # first iterate through the list of videos in the playlist using a for loop and enumerate function.
         
