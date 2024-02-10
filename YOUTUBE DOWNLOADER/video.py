@@ -60,11 +60,13 @@ def download_video(video_url, resolution):
 
 
 if __name__ == '__main__':
+
+    while True:
     
-    url = input("Please Enter the url of the video: ")
+        url = input("Please Enter the url of the video: ")
 
-    resolutions = ["240p", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
+        resolutions = ["240p", "360p", "480p", "720p", "1080p", "1440p", "2160p"]
 
-    resolution = input(f"Please choose a video resolution {resolutions}:  ")
+        resolution = input(f"Please choose a video resolution {resolutions}:  ")
 
-    download_video(url, resolution)
+        download_video(url, resolution)

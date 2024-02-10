@@ -34,7 +34,7 @@ def download_playlist(playlist_url, resolution):
 
         # Filter the available video streams to select the one with the desired resolution, and get its filename
         video_resolution = video.streams.filter(res=resolution).first()
-        video_filename = f"{index}. {video_resolution.default_filename}"
+        video_filename = f"{index}.{video_resolution.default_filename}"
 
         # Determine the full path and filename for the video file, and check if it already exists. 
         # If it does, skip downloading this video and move on to the next one:
