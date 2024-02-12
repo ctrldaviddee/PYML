@@ -1,3 +1,3 @@
-[submodule "pybasics"]
-	path = pybasics
+[submodule "PYBASICS/pybasics"]
+	path = PYBASICS/pybasics
 	url = https://github.com/ctrldaviddee/pybasics
