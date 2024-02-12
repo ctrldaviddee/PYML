@@ -1,3 +1,6 @@
 [submodule "PYBASICS/pybasics"]
 	path = PYBASICS/pybasics
 	url = https://github.com/ctrldaviddee/pybasics
+[submodule "TENSORFLOW 2.0/tensorflow"]
+	path = TENSORFLOW 2.0/tensorflow
+	url = https://github.com/ctrldaviddee/tensorflow
